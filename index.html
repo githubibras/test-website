@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON-Daten Beispiel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .item {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .item h2 {
+      margin: 0;
+      color: #333;
+    }
+    .item p {
+      margin: 5px 0;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>JSON-Daten Anzeige</h1>
+  <div id="output"></div>
+
+  <script>
+    // JSON-Daten abrufen
+    fetch('data.json') // Stellt sicher, dass sich die Datei im gleichen Ordner befindet
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Fehler beim Abrufen der JSON-Datei');
+        }
+        return response.json(); // JSON in ein JavaScript-Objekt umwandeln
+      })
+      .then(data => {
+        const output = document.getElementById('output');
+        data.items.forEach(item => {
+          const itemElement = document.createElement('div');
+          itemElement.className = 'item';
+          itemElement.innerHTML = `
+            <h2>${item.name}</h2>
+            <p><strong>ID:</strong> ${item.id}</p>
+            <p>${item.description}</p>
+          `;
+          output.appendChild(itemElement);
+        });
+      })
+      .catch(error => {
+        console.error('Fehler:', error); // Fehler in der Konsole anzeigen
+        document.getElementById('output').textContent = 'Fehler beim Laden der Daten.';
+      });
+  </script>
+</body>
+</html>

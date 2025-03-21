@@ -1,0 +1,20 @@
+{
+    "items": [
+      {
+        "id": 1,
+        "name": "Apfel",
+        "description": "Ein saftiger roter Apfel."
+      },
+      {
+        "id": 2,
+        "name": "Banane",
+        "description": "Eine süße gelbe Banane."
+      },
+      {
+        "id": 3,
+        "name": "Kirsche",
+        "description": "Kleine und süße Kirschen."
+      }
+    ]
+  }
+  
